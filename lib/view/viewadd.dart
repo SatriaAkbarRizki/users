@@ -21,11 +21,12 @@ class _ViewAddState extends State<ViewAdd> {
   }
 
   void addUser() async {
+    String id = "0";
     String name = nameController.text;
     String address = addressController.text;
     String avatar = imageController.text;
     UsersModel _usersModel =
-        UsersModel(name: name, address: address, avatar: avatar);
+        UsersModel(id: id, name: name, address: address, avatar: avatar);
 
     repository.postUser(_usersModel);
   }

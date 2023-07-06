@@ -12,6 +12,7 @@ class Repository {
       return null;
     } else {
       List<dynamic> data = jsonDecode(response.body);
+      print(data);
       return usersModel = data.map((e) => UsersModel.fromJson(e)).toList();
     }
   }
@@ -21,6 +22,23 @@ class Repository {
       final response = await http.post(uri, body: user.toJson());
 
       if (response.statusCode != 201) {
+        return false;
+      } else {
+        return true;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future deleteUser(String id) async {
+    final _baseUrl = "https://64a58a1500c3559aa9bfe0b5.mockapi.io/users";
+
+    try {
+      // Problem
+
+      final response = await http.delete(Uri.parse(_baseUrl + '/' + id));
+      if (response.statusCode != 200) {
         return false;
       } else {
         return true;

@@ -51,7 +51,13 @@ class _ViewUsersState extends State<ViewUsers> {
                           subtitle:
                               Text('Address: ${snapshot.data![index].address}'),
                           trailing: IconButton(
-                              onPressed: () {}, icon: Icon(Icons.arrow_right)),
+                              onPressed: () async {
+                                await repository
+                                    .deleteUser(snapshot.data![index].id);
+
+                                setState(() {});
+                              },
+                              icon: Icon(Icons.remove_circle_outline)),
                         ),
                       ),
                     );
