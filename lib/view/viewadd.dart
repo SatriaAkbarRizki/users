@@ -16,7 +16,6 @@ class _ViewAddState extends State<ViewAdd> {
   TextEditingController imageController = TextEditingController();
   @override
   void initState() {
-    addUser();
     super.initState();
   }
 
@@ -33,6 +32,13 @@ class _ViewAddState extends State<ViewAdd> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.popAndPushNamed(context, '/home');
+            },
+            icon: Icon(Icons.arrow_back)),
+      ),
       body: Center(
         child: SizedBox(
           width: 400,
