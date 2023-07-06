@@ -64,19 +64,11 @@ class _ViewUsersState extends State<ViewUsers> {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.popAndPushNamed(context, '/add-user');
+          },
+          child: Icon(Icons.add)),
     );
   }
 }
-// Container(
-//           decoration: BoxDecoration(border: Border.all(width: 2)),
-//           width: 400,
-//           child: ListTile(
-//             leading: Icon(
-//               Icons.people,
-//             ),
-//             title: Text('Judul'),
-//             subtitle: Text('Subtile'),
-//             trailing:
-//                 IconButton(onPressed: () {}, icon: Icon(Icons.arrow_right)),
-//           ),
-//         )

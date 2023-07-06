@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:users/view/viewadd.dart';
 import 'package:users/view/viewusers.dart';
 
 void main() {
@@ -11,6 +12,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/home' : (context) => ViewUsers(),
+        '/add-user' : (context) => ViewAdd()
+      },
       home: ViewUsers(),
     );
   }
