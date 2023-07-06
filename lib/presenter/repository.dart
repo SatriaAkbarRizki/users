@@ -12,7 +12,7 @@ class Repository {
       return null;
     } else {
       List<dynamic> data = jsonDecode(response.body);
-      print(data);
+
       return usersModel = data.map((e) => UsersModel.fromJson(e)).toList();
     }
   }

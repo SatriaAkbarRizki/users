@@ -50,14 +50,36 @@ class _ViewUsersState extends State<ViewUsers> {
                           title: Text(snapshot.data![index].name),
                           subtitle:
                               Text('Address: ${snapshot.data![index].address}'),
-                          trailing: IconButton(
-                              onPressed: () async {
+                          trailing: PopupMenuButton<int>(
+                            itemBuilder: (context) => [
+                              PopupMenuItem(
+                                value: 1,
+                                child: Row(children: [
+                                  Icon(Icons.edit_outlined),
+                                  Text('Edit Data')
+                                ]),
+                              ),
+                              PopupMenuItem(
+                                value: 2,
+                                child: Row(children: [
+                                  Icon(Icons.delete_forever_outlined),
+                                  Text('Delete Data')
+                                ]),
+                              )
+                            ],
+                            offset: Offset(0, 50),
+                            elevation: 2,
+                            onSelected: (value) async {
+                              if (value == 1) {
+                                print('Selected Edit Mode');
+                              } else if (value == 2) {
                                 await repository
                                     .deleteUser(snapshot.data![index].id);
-
+                                fetchUser();
                                 setState(() {});
-                              },
-                              icon: Icon(Icons.remove_circle_outline)),
+                              }
+                            },
+                          ),
                         ),
                       ),
                     );
