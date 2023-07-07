@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:users/view/viewadd.dart';
+import 'package:users/view/viewput.dart';
 import 'package:users/view/viewusers.dart';
 
 void main() {
@@ -14,7 +15,8 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/home' : (context) => ViewUsers(),
-        '/add-user' : (context) => ViewAdd()
+        '/add-user' : (context) => ViewAdd(),
+        '/put-user' : (context) => ViewPut()
       },
       home: ViewUsers(),
     );

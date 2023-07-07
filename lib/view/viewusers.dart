@@ -21,6 +21,7 @@ class _ViewUsersState extends State<ViewUsers> {
 
   void fetchUser() async {
     users = await repository.FetchUser();
+    setState(() {});
   }
 
   @override
@@ -71,7 +72,13 @@ class _ViewUsersState extends State<ViewUsers> {
                             elevation: 2,
                             onSelected: (value) async {
                               if (value == 1) {
-                                print('Selected Edit Mode');
+                                Navigator.popAndPushNamed(context, '/put-user',
+                                    arguments: [
+                                      snapshot.data![index].id,
+                                      snapshot.data![index].name,
+                                      snapshot.data![index].address,
+                                      snapshot.data![index].avatar
+                                    ]);
                               } else if (value == 2) {
                                 await repository
                                     .deleteUser(snapshot.data![index].id);

@@ -47,4 +47,19 @@ class Repository {
       print(e.toString());
     }
   }
+
+  Future putUser(UsersModel user) async {
+    final _baseUrl = "https://64a58a1500c3559aa9bfe0b5.mockapi.io/users";
+    try {
+      final response = await http.put(Uri.parse(_baseUrl + '/' + user.id),
+          body: user.toJson());
+      if (response.statusCode != 200) {
+        return false;
+      } else {
+        return true;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }
